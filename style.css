@@ -1,0 +1,134 @@
+/* .input{
+    text-align: center;
+}
+.input input{
+    width: 800px;
+    height: 50px;
+    
+} */
+
+
+.card-1 h2{
+ text-align: center;
+}
+.input{
+	display: flex;
+	justify-content: center;
+}
+.input input{
+	width: 500px;
+	height: 25px;
+	border-radius: 30px;
+	padding-left: 13px;
+
+}
+.button-group{
+	display: flex;
+	justify-content: center;
+	
+}
+.button-group button{
+	border-radius: 30px;
+	height: 25px;
+	width: 100px;
+	text-align: center;
+	padding-top: auto;
+	padding-bottom: auto;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 30px;
+	background-color:rgba(206, 8, 114, 0.486);
+	border: 10px;
+	color: white;
+	font-size: 16px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+.button-group button:hover{
+	border: 3px solid rgb(206, 8, 114);
+}
+.contanier{
+	display: flex;
+	justify-content: center;
+}
+.card{
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+.contanier .flag img{
+	width: 350px;
+	height: 230px;
+}
+
+.card-b{
+	border: 1px solid black;
+	width: 800px;
+	padding: 0px 30px 30px 30px;
+}
+.card-b h5{
+
+font-size: 30px;
+text-align: center;
+}
+.card ul{
+	display: flex;
+
+	flex-direction: column;
+	
+		justify-content: center;
+}
+.card li{
+	list-style-type: none;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+.card-b-1{
+	
+	padding: 10px;
+	
+}
+.contanier-1 .row-1{
+	display: flex;
+	
+	margin-top: 50px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+}
+.asd{
+	display: flex;
+
+
+}
+.card-1 .flag-1 img{
+	height: 180px;
+	width: 300px;
+}
+.card-1{
+
+}
+.card-title-1{
+	font-weight: 900;
+	text-align: center;
+	font-size: 17px;
+}
+.card-1 ul{
+	display: flex;
+
+	flex-direction: column;
+	
+		justify-content: center;
+}
+.card-1 li{
+	list-style-type: none;
+	font-size: 20px;
+}
+body{
+	background-color:floralwhite;
+}
+.sa{
+	display: none;
+}

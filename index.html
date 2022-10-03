@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Elsevar country</title>
+  </head>
+  <body>
+  
+    <div class="card-1">
+      <h2>About Country</h2>
+      <div class="input">
+        <input
+          class="input__field"
+          id="myInput"
+          type="text"
+          placeholder="Search "
+        />
+      </div>
+
+      <div class="button-group">
+        <button type="button" onclick="getInputValue();">Search</button>
+        <button type="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="contanier">
+      
+      <div class="row"></div>
+    </div>
+    <div class="contanier-1">
+      <h1 class="sa" style="text-align: center; ">Neighboring Countries</h1>
+      <div class="row-1"></div>
+    </div>
+
+
+    
+    <script>
+      function displaycountry(country) {
+        const request = new XMLHttpRequest();
+        request.open("GET", "https://restcountries.com/v3.1/name/" + country);
+        request.send();
+        const contanier_1=document.querySelector(".contanier-1")
+        const etik=document.querySelector(".sa");
+        request.addEventListener("load", function () {
+          const data = JSON.parse(request.responseText);
+          //console.log(data[0])
+          setdisplay(data[0]);
+          const qseherler = data[0].borders.toString();
+          console.log(qseherler);
+          etik.style.display="block";
+          contanier_1.style.border="border: 1px solid black"
+          const sorgu = new XMLHttpRequest();
+          sorgu.open(
+            "GET",
+            "https://restcountries.com/v3.1/alpha?codes=" + qseherler
+          );
+          sorgu.send();
+
+          sorgu.addEventListener("load", function () {
+            const data = JSON.parse(this.responseText);
+            console.log(data);
+            setdisplays(data);
+          });
+        });
+      }
+      function setdisplay(data) {
+        const card = `
+                      
+                
+               <div class="card-b">
+                <h5 class="card-title">${data.name.common}</h5>
+                <div class="card">
+                  <div class="flag">
+                    <img src="${data.flags.png}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  
+                  <div class="">
+                                          <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Capital: ${data.capital}</li>
+                                      <li class="list-group-item">Population: ${(
+                                        data.population / 1000000
+                                      ).toFixed(1)}</li>
+                                      <li class="list-group-item">Region: ${data.region}</li>
+                                      <li class="list-group-item">Currencies: ${Object.keys(
+                                        data.currencies
+                                      )}</li>
+                                      </ul>
+
+                </div>
+                </div>
+                </div>
+`;
+
+        document
+          .querySelector(".contanier .row")
+          .insertAdjacentHTML("beforeend", card);
+      }
+      function setdisplays(data) {
+        for (let count of data) {
+          const card = `
+   <div class="asd">
+          <div class="card-b-1">
+                <h5 class="card-title-1">${count.name.common}</h5>
+                <div class="card-1">
+                  <div class="flag-1">
+                    <img src="${count.flags.png}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  
+                  <div class="">
+                                          <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Capital: ${count.capital}</li>
+                                      <li class="list-group-item">Population: ${(
+                                        count.population / 1000000
+                                      ).toFixed(1)}</li>
+                                      <li class="list-group-item">Region: ${count.region}</li>
+                                      <li class="list-group-item">Currencies: ${Object.keys(
+                                        count.currencies
+                                      )}</li>
+                                      </ul>
+
+                </div>
+                </div>
+                </div>
+                </asd>
+              `;
+          document
+            .querySelector(".contanier-1 .row-1")
+            .insertAdjacentHTML("beforeend", card);
+        }
+      }
+
+      function getInputValue() {
+        var inputVal = document.getElementById("myInput").value;
+
+        displaycountry(inputVal);
+      }
+
+      let timer;
+
+      document.addEventListener("input", (e) => {
+        const el = e.target;
+
+        if (el.matches("[data-color]")) {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            document.documentElement.style.setProperty(
+              `--color-${el.dataset.color}`,
+              el.value
+            );
+          }, 100);
+        }
+      });
+    </script>
+  </body>
+</html>
